@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns=" http://www.thymeLeaf.org"><!--covertir plantilla a thymeleaf-->
+
+
+
+
+
+<head th:insert="~{administrador/template_admin.html::head}"></head>
+
+
+
+<body>
+
+
+
+	<!-- ======= Header ======= -->
+
+
+
+	<div th:insert="~{administrador/template_admin.html::header}"></div>
+
+
+
+	<!-- End Header -->
+
+
+
+	<main id="main" class="main">
+
+
+
+		<div class="pagetitle">
+
+			<h1>Panel de Administrador</h1>
+
+			<nav>
+
+				<ol class="breadcrumb">
+
+					<li class="breadcrumb-item"><a th:href="@{../administrador}">Home</a></li>
+
+					<li class="breadcrumb-item"><a th:href="@{/producto}">Producto</a></li>
+
+					<li class="breadcrumb-item active"></li><a href="#"></a>Lista de Productos</li>
+
+
+
+				</ol>
+
+			</nav>
+
+		</div><!-- End Page Title -->
+
+
+
+		<section class="section dashboard">
+
+			<div class="row>">
+
+				<div class="colg-lg-12">
+
+					<div class="card">
+
+						<div class="card-body">
+
+							<h5 class="card-title">Lista de Productos</h5>
+
+							<p>Creacion de Productos
+
+								<br><a class="btn btn-primary" th:href="@{/productos/create}">Crear Productos</a>
+
+							</p>
+
+
+
+							<table class="table datatable">
+
+								<thead>
+
+									<tr>
+
+										<th scope="col">Nombre</th>
+
+										<th scope="col">Descripcion</th>
+
+										<th scope="col">Cantidad</th>
+
+										<th scope="col">Precio</th>
+
+										<th scope="col">Accion</th>
+
+										<th scope="col">Accion</th>
+
+									</tr>
+
+								</thead>
+
+								<tbody>
+
+									<tr th:each="producto:${productos}">
+
+										<td th:text="${producto.nombre}"></td>
+
+										<td th:text="${producto.descripcion}"></td>
+
+										<td th:text="${producto.cantidad}"></td>
+
+										<td
+											th:text="${#strings.concat('$', #numbers.formatDecimal(producto.precio, 0, 'POINT', 0, 'POINT'))}">
+
+										</td>
+
+										<td><i tittle="Editar" class="btn btn-warning"
+												href="@{productos/edit/{id} (id=${producto.id})}"><i
+													class="bi bi-pencil-square"></i>Editar</a></td>
+
+										<td><i tittle="Eliminar" class="btn btn-danger"
+												href="@{productos/delete/{id} (id=${producto.id})}"><i
+													class="bi bi-file-earmark-x"></i>Eliminar</a></td>
+
+
+
+										<td></td>
+
+									</tr>
+
+								</tbody>
+
+							</table>
+
+
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</section>
+
+
+
+	</main><!-- End #main -->
+
+
+
+	<!-- ======= Footer ======= -->
+
+
+
+	<div th:insert="~{administrador/template_admin.html::footer}"></div>
+
+
+
+
+
+	</div>
+
+	<!-- End Footer -->
+
+
+
+
+
+	<!-- Vendor JS Files -->
+
+	<div th:insert="~{administrador/template_admin.html::jsFiles}"></div>
+
+
+
+
+
+</body>
+
+
+
+</html>
