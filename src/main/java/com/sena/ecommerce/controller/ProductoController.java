@@ -47,7 +47,7 @@ public class ProductoController {
 		Usuario u = new Usuario(1, "", "", "", "", "", "", "", "");
 		producto.setUsuario(u);
 		productoService.save(producto);
-		return "redirect/productos";
+		return "redirect:/productos";
 
 	}
 
@@ -71,7 +71,7 @@ public class ProductoController {
 		Usuario u = new Usuario(1, "", "", "", "", "", "", "", "");
 		producto.setUsuario(u);
 		productoService.update(producto);
-		return "redirect/productos";
+		return "redirect:/productos";
 
 	}
 
@@ -79,7 +79,7 @@ public class ProductoController {
 	@GetMapping("delete/{id}")
 	public String delete(@PathVariable Integer id) {
 		productoService.delete(id);
-		return "redirect/productos";
+		return "redirect:/productos";
 	}
 
 }

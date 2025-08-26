@@ -40,7 +40,7 @@
 
 					<li class="breadcrumb-item"><a th:href="@{../administrador}">Home</a></li>
 
-					<li class="breadcrumb-item"><a th:href="@{/producto}">Producto</a></li>
+					<li class="breadcrumb-item"><a th:href="@{/productos}">Producto</a></li>
 
 					<li class="breadcrumb-item active"></li><a href="#"></a>Lista de Productos</li>
 
@@ -111,12 +111,12 @@
 
 										</td>
 
-										<td><i tittle="Editar" class="btn btn-warning"
-												href="@{productos/edit/{id} (id=${producto.id})}"><i
+										<td><a tittle="Editar" class="btn btn-warning"
+												th:href="@{productos/edit/{id} (id=${producto.id})}"><i
 													class="bi bi-pencil-square"></i>Editar</a></td>
 
-										<td><i tittle="Eliminar" class="btn btn-danger"
-												href="@{productos/delete/{id} (id=${producto.id})}"><i
+										<td><a tittle="Eliminar" class="btn btn-danger"
+												th:href="@{productos/delete/{id} (id=${producto.id})}"><i
 													class="bi bi-file-earmark-x"></i>Eliminar</a></td>
 
 
