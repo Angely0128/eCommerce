@@ -74,61 +74,19 @@
 		<h2 class="section-title">Productos Destacados</h2>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="#">Home</a></li>
+				<li class="breadcrumb-item"><a href="@{/}">Home</a></li>
 				<li class="breadcrumb-item active" aria-current="page">Productos</li>
 			</ol>
 		</nav>
 		<div class="row g-4">
-			<div class="col-md-6 col-lg-3">
+			<div class="col-md-6 col-lg-3" th:each="producto : ${productos}">
 				<div class="card product-card">
-					<img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"
-						class="card-img-top" alt="Smartphone">
+					<img th:src="@{/images/{img} (img=${producto.imagen})}" th:alt="${producto.imagen}"
+						class="card-img-top">
 					<div class="card-body">
-						<h5 class="card-title">Smartphone Pro X</h5>
-						<p class="card-text">El mejor smartphone del mercado con cámara de 108MP</p>
-						<p class="h5 text-primary">$599.99</p>
-						<button class="btn btn-primary w-100 add-to-cart">
-							<i class="bi bi-cart-plus me-1"></i> Añadir al carrito
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-3">
-				<div class="card product-card">
-					<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"
-						class="card-img-top" alt="Reloj Inteligente">
-					<div class="card-body">
-						<h5 class="card-title">Reloj Inteligente</h5>
-						<p class="card-text">Monitoriza tu salud y actividad diaria con este reloj</p>
-						<p class="h5 text-primary">$199.99</p>
-						<button class="btn btn-primary w-100 add-to-cart">
-							<i class="bi bi-cart-plus me-1"></i> Añadir al carrito
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-3">
-				<div class="card product-card">
-					<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"
-						class="card-img-top" alt="Auriculares">
-					<div class="card-body">
-						<h5 class="card-title">Auriculares Premium</h5>
-						<p class="card-text">Sonido de alta calidad con cancelación de ruido</p>
-						<p class="h5 text-primary">$149.99</p>
-						<button class="btn btn-primary w-100 add-to-cart">
-							<i class="bi bi-cart-plus me-1"></i> Añadir al carrito
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6 col-lg-3">
-				<div class="card product-card">
-					<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=300&q=80"
-						class="card-img-top" alt="Zapatillas">
-					<div class="card-body">
-						<h5 class="card-title">Zapatillas Deportivas</h5>
-						<p class="card-text">Máxima comodidad para tus entrenamientos diarios</p>
-						<p class="h5 text-primary">$89.99</p>
+						<h5 class="card-title" th:text="${producto.nombre}"></h5>
+						<p class="card-text"th:text="${producto.descripcion}"></p>
+						<p class="h5 text-primary" th:text="${#strings.concat('$', #numbers.formatDecimal(producto.precio, 0, 'POINT', 0, 'POINT'))}"></p>
 						<button class="btn btn-primary w-100 add-to-cart">
 							<i class="bi bi-cart-plus me-1"></i> Añadir al carrito
 						</button>
