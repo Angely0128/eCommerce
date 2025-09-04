@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html lang="es" xmlns=" http://www.thymeLeaf.org"><!--covertir plantilla a thymeleaf-->
+
+
+
+
+
+<head th:insert="~{administrador/template_admin.html::head}"></head>
+
+
+
+<body>
+
+
+
+	<!-- ======= Header ======= -->
+
+
+
+	<div th:insert="~{administrador/template_admin.html::header}"></div>
+
+
+
+	<!-- End Header -->
+
+
+
+	<main id="main" class="main">
+
+
+
+		<div class="pagetitle">
+
+			<h1>Panel de Administrador</h1>
+
+			<nav>
+
+				<ol class="breadcrumb">
+
+					<li class="breadcrumb-item"><a th:href="@{../administrador}">Home</a></li>
+
+					<li class="breadcrumb-item"><a th:href="@{/productos}">Producto</a></li>
+
+					<li class="breadcrumb-item active"></li><a href="#"></a>Lista de Productos</li>
+
+
+
+				</ol>
+
+			</nav>
+
+		</div><!-- End Page Title -->
+
+
+
+		<section class="section dashboard">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Crear Producto</h5>
+
+					<form th:action="@{/productos/update}" method="post" enctype="multipart/form-data">
+						<div>
+							<input type="hidden" name="id" id="id" th:value="${producto.id}">
+						</div>
+						<div class="row mb-3">
+							<label for="inputText" class="col-sm-2 col-form-label">Nombre: </label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="nombre" name="nombre"
+									placeholder="Ingrese el nombre del producto" autocomplete="off" required th:value="${producto.nombre}">
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputText" class="col-sm-2 col-form-label">Descripcion: </label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="descripcion" name="descripcion"
+									placeholder="Ingrese la descripcion del producto" autocomplete="off" required th:value="${producto.descripcion}">
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputNumber" class="col-sm-2 col-form-label">Precio: </label>
+							<div class="col-sm-10">
+								<input type="number" class="form-control" id="precio" name="precio"
+									placeholder="Ingrese el precio del producto" autocomplete="off" required th:value="${producto.precio}">
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputNumber" class="col-sm-2 col-form-label">Cantidad: </label>
+							<div class="col-sm-10">
+								<input type="number" class="form-control" id="cantidad" name="cantidad"
+									placeholder="Ingrese la cantidad del producto" autocomplete="off" required th:value="${producto.cantidad}">
+							</div>
+						</div>
+						<div class="row mb-3">
+							<label for="inputFile" class="col-sm-2 col-form-label">Imagen: </label>
+							<div class="col-sm-10">
+								<input type="file" class="form-control" id="img" name="img">
+								<p>(Dimensiones recomendadas 500x500 pixels formato jpg o png)</p>
+							</div>
+						</div>
+
+						<div class="row mb-3">
+							<label class="col-sm-2 col-form-label">Guardar Cambios: </label>
+							<div class="col-sm-10">
+								<button type="submit" class="btn btn-success"><i
+										class="bi bi-send-plus"></i>Guardar</button>
+							</div>
+						</div>
+
+
+					</form>
+				</div>
+			</div>
+
+
+		</section>
+
+
+
+	</main><!-- End #main -->
+
+
+
+	<!-- ======= Footer ======= -->
+
+
+
+	<div th:insert="~{administrador/template_admin.html::footer}"></div>
+
+
+
+
+
+	</div>
+
+	<!-- End Footer -->
+
+
+
+
+
+	<!-- Vendor JS Files -->
+
+	<div th:insert="~{administrador/template_admin.html::jsFiles}"></div>
+
+
+
+
+
+</body>
+
+
+
+</html>

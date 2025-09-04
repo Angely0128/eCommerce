@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeLeaf.org">
+
+<head th:insert="~{usuario/template_user.html::head}">
+
+</head>
+
+<body>
+
+	<div th:insert="~{usuario/template_user.html::headerLogout}"></div>
+
+	<!-- Hero Section -->
+	<section class="hero-section">
+
+	</section>
+
+	<!-- Carrusel de Promociones -->
+	<section class="container mb-5">
+
+	</section>
+
+	<!-- Productos -->
+	<section class="container mb-5" id="productos">
+		<h2 class="section-title">Spring Ecommerce Carrito de Compras</h2>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Carrito</li>
+			</ol>
+		</nav>
+		<div class="card mb-4">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-lg-9">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">Producto</th>
+									<th scope="col">Precio</th>
+									<th scope="col">Cantidad</th>
+									<th scope="col">Total</th>
+									<th scope="col">Accion</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="dorden:${cart}">
+									<td th:text="${dorden.nombre}"></td>
+									<td th:text="${dorden.precio}"></td>
+									<td th:text="${dorden.cantidad}"></td>
+									<td th:text="${#strings.concat('$', #numbers.formatDecimal(dorden.total, 0, 'POINT', 0, 'POINT'))}"></td>
+									<td>
+										<a th:href="@{/delete/cart/{id} (id=${dorden.producto.id})}" class="btn btn-danger">Quitar</a>
+									</td>
+
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-lg-3">
+						<h2 class="card-title">SUBTOTAL</h2>
+						<ul class="list-group">
+							<li class="list-group-item">
+								<h5
+									th:text="${#strings.concat('$', #numbers.formatDecimal(orden.total, 0, 'POINT', 0, 'POINT'))}">
+								</h5>
+							</li>
+							<a th:href="@{/orden}" class="btn btn-dark"> Ver Orden</a>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<div th:insert="~{usuario/template_user.html::footer}"></div>
+
+
+	<div th:insert="~{usuario/template_user.html::jsFiles}"></div>
+</body>
+
+</html>

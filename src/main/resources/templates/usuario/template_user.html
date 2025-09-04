@@ -57,7 +57,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark sticky-top" aria-label="Menú principal">
 		<div class="container">
 			<div class="logo-container">
-				<a class="navbar-brand" href="#"><img th:src="@{/assets/img/logoEcommerce.jpg}" alt="Logo Tienda"
+				<a class="navbar-brand" th:href="@{/}"><img th:src="@{/assets/img/logoEcommerce.jpg}" alt="Logo Tienda"
 						class="rounded-circle" id="fondows" width="50" height="50">&nbsp; PurpleShop</a>
 			</div>
 
@@ -68,13 +68,13 @@
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav me-auto">
 					<li class="nav-item">
-						<a class="nav-link active" href="#">Inicio</a>
+						<a class="nav-link active" th:href="@{/}">Inicio</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#productos">Productos</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Contacto</a>
+						<a class="nav-link" th:href="@{/administrador}">Contacto</a>
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

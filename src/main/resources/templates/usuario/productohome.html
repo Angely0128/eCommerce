@@ -10,18 +10,16 @@
 	<div th:insert="~{usuario/template_user.html::headerLogout}"></div>
 
 	<!-- Hero Section -->
-	<section class="hero-section">
+	<!--<section class="hero-section"> 	</section>
 
-	</section>
-
-	<!-- Carrusel de Promociones -->
+	<!- Carrusel de Promociones -->
 	<section class="container mb-5">
 
 	</section>
 
 	<!-- Productos -->
 	<section class="container mb-5" id="productos">
-		<h2 class="section-title">Productos Destacados</h2>
+		<h2 class="section-title">Spring Ecommerce Producto</h2>
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
@@ -33,12 +31,13 @@
 				<div class="row">
 					<div class="col-lg-6">
 						<a href="#">
-							<img class="img-fluid rounded" th:src="@{/images/{img} (img=${producto.imagen})}" th:alt="${producto.nombre}">
+							<img class="img-fluid rounded" th:src="@{/images/{img} (img=${producto.imagen})}"
+								th:alt="${producto.nombre}">
 						</a>
 					</div>
 					<div class="col-lg-6">
 						<form th:action="@{/cart}" method="post">
-							<input type="hidden" th:value="${producto.id}" name="id">
+							<input type="hidden" th:value="${producto.id}" name="id" id="id">
 							<h2 class="card-title" th:text="${producto.nombre}"></h2>
 							<ul class="list-group">
 								<li class="list-group-item">
@@ -56,6 +55,7 @@
 									</h6>
 								</li>
 							</ul>
+							<br>
 							<button type="submit" class="btn btn-dark">Añadir al Carrito</button>
 						</form>
 					</div>
