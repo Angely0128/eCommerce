@@ -67,11 +67,11 @@ public class OrdenServiceImplement implements IOrdenService {
 		}
 		
 		if(numero < 10) {
-			numeroConcatenado = "T000000000" + String.valueOf(numero);
+			numeroConcatenado = "0000000000" + String.valueOf(numero);
 		}else if (numero < 100){
-			numeroConcatenado = "T000000000" + String.valueOf(numero);
+			numeroConcatenado = "0000000000" + String.valueOf(numero);
 		}else if (numero < 1000) {
-			numeroConcatenado = "T000000000" + String.valueOf(numero);
+			numeroConcatenado = "0000000000" + String.valueOf(numero);
 		}
 		return numeroConcatenado;
 	}

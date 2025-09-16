@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://thymeLeaf.org">
+
+<head th:insert="~{usuario/template_user.html::head}">
+
+</head>
+
+<body>
+
+	<div th:insert="~{usuario/template_user.html::headerLogout}"></div>
+
+	<!-- Hero Section -->
+	<section class="hero-section">
+
+	</section>
+
+	<!-- Carrusel de Promociones -->
+	<section class="container mb-5">
+
+	</section>
+
+	<!-- Productos -->
+	<section class="container mb-5" id="productos">
+		<h2 class="section-title">Spring Ecommerce Registro de Usuario</h2>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">Registro</li>
+			</ol>
+		</nav>
+		<section class="container mb-5">
+		      <h2 class="section-title">Registro de Usuario</h2>
+		      <div class="row justify-content-center">
+		          <div class="col-md-8">
+		              <div class="card">
+		                  <div class="card-body">
+		                      <form>
+		                          <div class="row mb-3">
+		                              <div class="col-md-6">
+		                                  <label for="firstName" class="form-label">Nombre</label>
+		                                  <input type="text" class="form-control" id="firstName" placeholder="Tu nombre"
+		                                      required>
+		                              </div>
+		                              <div class="col-md-6">
+		                                  <label for="lastName" class="form-label">Apellido</label>
+		                                  <input type="text" class="form-control" id="lastName" placeholder="Tu apellido"
+		                                      required>
+		                              </div>
+		                          </div>
+		                          <div class="mb-3">
+		                              <label for="email" class="form-label">Email</label>
+		                              <input type="email" class="form-control" id="email" placeholder="tucorreo@ejemplo.com"
+		                                  required>
+		                          </div>
+		                          <div class="row mb-3">
+		                              <div class="col-md-6">
+		                                  <label for="password" class="form-label">Contraseña</label>
+		                                  <input type="password" class="form-control" id="password"
+		                                      placeholder="Crea una contraseña" required>
+		                              </div>
+		                              <div class="col-md-6">
+		                                  <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
+		                                  <input type="password" class="form-control" id="confirmPassword"
+		                                      placeholder="Repite tu contraseña" required>
+		                              </div>
+		                          </div>
+		                          <div class="mb-3">
+		                              <label for="address" class="form-label">Dirección</label>
+		                              <input type="text" class="form-control" id="address" placeholder="Tu dirección completa"
+		                                  required>
+		                          </div>
+		                          <div class="row mb-3">
+		                              <div class="col-md-6">
+		                                  <label for="city" class="form-label">Ciudad</label>
+		                                  <input type="text" class="form-control" id="city" placeholder="Tu ciudad" required>
+		                              </div>
+		                              <div class="col-md-3">
+		                                  <label for="zip" class="form-label">Código Postal</label>
+		                                  <input type="text" class="form-control" id="zip" placeholder="Código postal"
+		                                      required>
+		                              </div>
+		                              <div class="col-md-3">
+		                                  <label for="country" class="form-label">País</label>
+		                                  <select class="form-select" id="country">
+		                                      <option selected>Seleccionar</option>
+		                                      <option>España</option>
+		                                      <option>México</option>
+		                                      <option>Argentina</option>
+		                                      <option>Colombia</option>
+		                                      <option>Chile</option>
+		                                  </select>
+		                              </div>
+		                          </div>
+		                          <div class="form-check mb-3">
+		                              <input class="form-check-input" type="checkbox" id="terms">
+		                              <label class="form-check-label" for="terms">
+		                                  Acepto los términos y condiciones
+		                              </label>
+		                          </div>
+		                          <button type="submit" class="btn btn-primary w-100">Registrarse</button>
+		                      </form>
+		                  </div>
+		              </div>
+		          </div>
+		      </div>
+	</section>
+
+	<div th:insert="~{usuario/template_user.html::footer}"></div>
+
+
+	<div th:insert="~{usuario/template_user.html::jsFiles}"></div>
+</body>
+
+</html>

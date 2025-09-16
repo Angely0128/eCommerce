@@ -118,16 +118,16 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 				</div>
 				<div class="modal-body">
-					<form>
+					<form action="@{/usuario/acceder}" method="post">
 						<div class="mb-3">
 							<label for="loginEmail" class="form-label"><i class="bi bi-envelope"></i> Email</label>
-							<input type="email" class="form-control" id="loginEmail" placeholder="tucorreo@ejemplo.com"
-								required>
+							<input type="email" class="form-control" id="email" name="email"
+								placeholder="tucorreo@ejemplo.com" required>
 						</div>
 						<div class="mb-3">
 							<label for="loginPassword" class="form-label"><i class="bi bi-key"></i> Contraseña</label>
-							<input type="password" class="form-control" id="loginPassword" placeholder="Tu contraseña"
-								required>
+							<input type="password" class="form-control" id="password" name="password"
+								placeholder="Tu contraseña" required>
 						</div>
 						<div class="mb-3 form-check">
 							<input type="checkbox" class="form-check-input" id="remember">
@@ -141,8 +141,7 @@
 					</div>
 					<hr class="my-4">
 					<div class="text-center">
-						<p>¿No tienes cuenta? <a href="#" data-bs-dismiss="modal" data-bs-toggle="modal"
-								data-bs-target="#registerModal">Regístrate</a></p>
+						<p>¿No tienes cuenta? <a th:href="@{/usuario/registro}">Regístrate</a></p>
 					</div>
 				</div>
 			</div>

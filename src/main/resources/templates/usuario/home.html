@@ -16,11 +16,15 @@
 			<p class="lead mb-5">Encuentra los mejores productos al mejor precio</p>
 			<div class="search-container">
 				<div class="input-group">
-					<input type="text" class="form-control form-control-lg" placeholder="Buscar productos...">
-					<button id="searchToggle" class="btn btn-light" type="button" data-bs-toggle="tooltip"
-						data-bs-placement="bottom" title="Buscar">
-						<i class="bi bi-search"></i>
-					</button>
+					<form method="post" th:action="@{/search}">
+						<input id="nombre" name="nombre" type="text" class="form-control form-control"
+							placeholder="Buscar productos...">
+						<button id="searchToggle" class="btn btn-light" type="submit" data-bs-toggle="tooltip"
+							data-bs-placement="bottom" title="Buscar">
+							<i class="bi bi-search"></i>
+						</button>
+					</form>
+
 				</div>
 			</div>
 		</div>

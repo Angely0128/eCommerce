@@ -1,9 +1,11 @@
 package com.sena.ecommerce.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sena.ecommerce.model.DetalleOrden;
 import com.sena.ecommerce.model.Orden;
 import com.sena.ecommerce.model.Producto;
+import com.sena.ecommerce.model.Usuario;
 import com.sena.ecommerce.service.IDetalleOrdenService;
 import com.sena.ecommerce.service.IOrdenService;
 import com.sena.ecommerce.service.IProductoService;
@@ -126,6 +129,64 @@ public class HomeUserController {
 		model.addAttribute("cart", detalles);
 		model.addAttribute("orden", orden);
 		return "usuario/carrito";
+	}
+
+	// metodo para redirigir el carrito de compra sin prudctos
+	@GetMapping("/getCart")
+	public String getCart(Model model) {
+		model.addAttribute("cart", detalles);
+		model.addAttribute("orden", orden);
+		return "/usuario/carrito";
+	}
+	// metodo para redirigir a la vista el resumen de la orden
+
+	@GetMapping("/orden")
+	public String orden(Model model) {
+		Usuario u = usuarioService.findbyId(2).get();
+		model.addAttribute("cart", detalles);
+		model.addAttribute("orden", orden);
+		model.addAttribute("usuario", u);
+		return "/usuario/resumenorden";
+	}
+
+	// metodo que genera la orden y detalles de la orden
+	@GetMapping("/saveOrder")
+	public String saveOrder() {
+		Date fechacreacion = new Date();
+		orden.setFechacreacion(fechacreacion);
+		orden.setNumero(ordenService.generarNumeroOrden());
+		Usuario u = usuarioService.findbyId(2).get();
+		orden.setUsuario(u);
+		ordenService.save(orden);
+//guardar detalles de la orden
+		for (DetalleOrden dt : detalles) {
+			dt.setOrden(orden);
+			detalleOrden.save(dt);
+			// descuento de cantidad de productocomprada dek stock del producto
+			Producto p = dt.getProducto();
+			int cantComprada = dt.getCantidad().intValue();// conversion de double a int
+			if (p.getCantidad() >= cantComprada) {
+				p.setCantidad(p.getCantidad() - cantComprada);
+				productoService.update(p);
+			} else {
+				throw new IllegalStateException("Stock insuficiente para el producto: " + p.getNombre());
+
+			}
+		}
+//limpiar los valores que no se añadan a la sigueinte orden o la orden recien guardada
+		orden = new Orden();
+		detalles.clear();
+		return "redirect:/";
+	}
+
+	// metodo post para buscar productos de la vista principal o home de usuarios
+	@PostMapping("/search")
+	public String searchProducto(@RequestParam String nombre, Model model) {
+		LOGGER.warn("nombre del producto: {}", nombre);
+		List<Producto> productos = productoService.findAll().stream()
+				.filter(p -> p.getNombre().toUpperCase().contains(nombre.toUpperCase())).collect(Collectors.toList());
+		model.addAttribute("productos", productos);
+		return "usuario/home";
 	}
 
 }
